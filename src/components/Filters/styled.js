@@ -27,6 +27,6 @@ export const ChipsWrapper = styled.div`
   display: flex;
   .selected {
     color: white;
-    background: #26c6da;
+    background: #15dbff;
   }
 `;

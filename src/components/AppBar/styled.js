@@ -1,12 +1,18 @@
 import styled from "styled-components";
 export const StyledBar = styled.div`
-  position: absolute;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   height: 64px;
   width: 100%;
   display: flex;
   align-items: center;
   background: white;
+  .shop {
+    margin-left: 0;
+    margin-right: 24px;
+    cursor: pointer;
+  }
+  .loading {
+  }
 `;
 export const Icon = styled.img`
   height: 48px;

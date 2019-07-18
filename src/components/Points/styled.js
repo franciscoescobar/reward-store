@@ -8,14 +8,15 @@ export const StyledPoints = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 12px;
-  background: #dedede;
+  background: #e0e0e0;
+  cursor: pointer;
 `;
 export const Icon = styled.img`
-  height: 24px;
-  width: 24px;
+  height: 28px;
+  width: 28px;
 `;
 export const Amount = styled.p`
-  font-size: 14px;
+  font-size: 18px;
   margin-right: 8px;
-  font-weight: 300;
+  font-weight: 400;
 `;

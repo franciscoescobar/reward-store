@@ -5,9 +5,10 @@ export const Wrapper = styled.div`
   margin-left: 12px;
   border-radius: 30px;
   justify-content: center;
-  background: #dedede;
+  background: #e0e0e0;
   padding: 0 12px;
   align-items: center;
+  cursor: pointer;
 `;
 export const Text = styled.p`
   font-size: 12px;

@@ -1,9 +1,12 @@
 import React from "react";
 import coin from "../../assets/icons/coin.svg";
 import { StyledPoints, Amount, Icon } from "./styled";
-const Points = ({ relative }) => (
-  <StyledPoints className={relative ? "relative" : ""}>
-    <Amount>1300</Amount>
+const Points = ({ relative, amount, cant }) => (
+  <StyledPoints
+    className={relative ? "relative" : ""}
+    className={cant ? "cant" : ""}
+  >
+    <Amount>{amount}</Amount>
     <Icon src={coin} />
   </StyledPoints>
 );

@@ -62,7 +62,11 @@ export const Right = styled.div`
     font-weight: 900;
   }
 `;
-export const RedeemButton = styled.button`
+export const RedeemButton = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   font-size: 16px;
   margin-top: 24px;
   height: 50px;

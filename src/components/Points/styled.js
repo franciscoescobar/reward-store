@@ -8,8 +8,12 @@ export const StyledPoints = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 12px;
-  background: #e0e0e0;
+  background: #e5e5e5;
   cursor: pointer;
+  .unaffordable {
+    color: #a70000;
+    min-width: 118px;
+  }
 `;
 export const Icon = styled.img`
   height: 28px;

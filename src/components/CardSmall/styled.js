@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   background: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 5px;
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+    justify-content: center;
+  }
 `;
 export const Left = styled.div`
   width: 80px;
@@ -34,8 +38,11 @@ export const Right = styled.div`
   }
 `;
 export const Middle = styled.div`
-  width: 100px;
+  width: 130px;
   margin-left: 8px;
+  @media only screen and (max-width: 600px) {
+    flex: 1;
+  }
   h3 {
     color: #cbcbcb;
     font-size: 14px;

@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 290px;
+  flex-basis: 290px;
   height: 290px;
   margin-bottom: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -19,6 +20,9 @@ export const Wrapper = styled.div`
     margin-left: 200px;
     background: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  > .unaffordable {
+    margin-right: 100px;
   }
 `;
 export const Image = styled.img`

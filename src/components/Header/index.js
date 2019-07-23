@@ -1,41 +1,39 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import header from "../../assets/header-x1.png";
 import { Wrapper, StyledHeader, StyledShop } from "./styled";
 import CardSmall from "../CardSmall";
-import Skeleton from "react-loading-skeleton";
-import api from "../../utils/api";
-const Header = () => {
-  const [shop, setShop] = useState(false);
-  const [history, setHistory] = useState([]);
-  const [historyLoading, setHistoryLoading] = useState(true);
-  const isInitialMount = useRef(true);
-  const fetchHistory = async () => {
-    try {
-      setHistoryLoading(true);
-      console.log(historyLoading);
-      const his = await api.getHistory();
-      setHistory(his);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setHistoryLoading(false);
-      console.log(historyLoading);
-    }
-  };
-  const handleClick = () => {
-    setShop(!shop);
-  };
+import { useSelector, useDispatch } from "react-redux";
+import { getHistoryRequest } from "../../thunks/history";
+import LoadingDots from "../LoadingDots";
 
+const Header = () => {
+  const historyToggle = useSelector(state => state.toggle);
+  const history = useSelector(state => state.historyReducer);
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetchHistory();
+    getHistoryRequest()(dispatch);
   }, []);
+
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper>
       <StyledHeader src={header} />
-      <StyledShop className={shop ? "open" : null}>
-        {history.map((elem, index) => {
-          return <CardSmall card={elem} key={index} />;
-        })}
+
+      <StyledShop
+        className={
+          historyToggle && history.loading
+            ? "open loading-wrapper"
+            : historyToggle
+            ? "open"
+            : null
+        }
+      >
+        {history.loading ? (
+          <LoadingDots />
+        ) : (
+          history.history.map((elem, index) => {
+            return <CardSmall card={elem} key={index} />;
+          })
+        )}
         <hr />
       </StyledShop>
     </Wrapper>

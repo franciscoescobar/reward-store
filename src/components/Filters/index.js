@@ -7,23 +7,28 @@ import {
   SortText,
   ChipsWrapper
 } from "./styled";
-
+import { sortHigher, sortLower, sortRecent } from "../../actions/index";
+import { useDispatch } from "react-redux";
 const Filters = () => {
   const [first, setFirst] = useState(true);
   const [second, setSecond] = useState(false);
   const [third, setThird] = useState(false);
+  const dispatch = useDispatch();
   const handleChipClick = text => {
     setFirst(false);
     setSecond(false);
     setThird(false);
     if (text === "Most Recent") {
       setFirst(true);
+      dispatch(sortRecent());
     }
     if (text === "Lowest Price") {
       setSecond(true);
+      dispatch(sortLower());
     }
     if (text === "Highest Price") {
       setThird(true);
+      dispatch(sortHigher());
     }
   };
   return (

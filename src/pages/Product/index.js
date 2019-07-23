@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import coin from "../../assets/icons/coin.svg";
 import {
   Container,
@@ -8,56 +8,29 @@ import {
   Right,
   ProductPage
 } from "./styled";
-import api from "../../utils/api";
 import AppBar from "../../components/AppBar";
+import { useSelector, useDispatch } from "react-redux";
+import { redeemProduct } from "../../thunks/redeemProduct";
+import LoadingDots from "../../components/LoadingDots";
+import Skeleton from "react-loading-skeleton";
+import Modal from "../../components/Modal";
+import { getProductsRequest } from "../../thunks/products";
+import { getUserRequest } from "../../thunks/user";
 const Product = ({ match }) => {
-  const [selectedProduct, setSelectedProduct] = useState({ img: { url: "" } });
-  const [points, setPoints] = useState(0);
-  const [productsLoading, setProductsLoading] = useState(false);
-  const [redeemLoading, setRedeemLoading] = useState(false);
-  const [pointsLoading, setPointsLoading] = useState(false);
   const productId = match.params.id;
-  const fetchProducts = async () => {
-    try {
-      setProductsLoading(true);
-      const products = await api.getProducts();
-      const product = products.filter(product => product._id === productId)[0];
-      setSelectedProduct(product);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setProductsLoading(false);
-    }
-  };
-  const pushRedeemProduct = async () => {
-    try {
-      setRedeemLoading(true);
-      const redeemProduct = await api.redeemProduct(productId);
-      console.log(redeemProduct);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setRedeemLoading(false);
-    }
-  };
-  const getUserPoints = async () => {
-    try {
-      setPointsLoading(true);
-      const user = await api.getUser();
-      setPoints(user.points);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setPointsLoading(false);
-    }
-  };
-  const handleRedeem = () => {
-    pushRedeemProduct();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.userReducer);
+  const products = useSelector(state => state.productsReducer.products);
+  const selectedProduct = products.filter(
+    product => product._id === productId
+  )[0];
+
+  const handleRedeemButton = () => {
+    redeemProduct(productId)(dispatch);
+    getUserRequest()(dispatch);
   };
   useEffect(() => {
-    fetchProducts();
-    getUserPoints();
-    return () => {};
+    getProductsRequest()(dispatch);
   }, []);
   return (
     <ProductPage>
@@ -67,25 +40,61 @@ const Product = ({ match }) => {
           <Left>
             <ul>
               <li>AVAILABLE POINTS</li>
-              <li className="points">
-                {points} <img alt="coin" src={coin} />
-              </li>
+              {user.pointsLoading || user.userLoading ? (
+                <LoadingDots />
+              ) : (
+                <li className="points">
+                  {user.user.points || <Skeleton />}
+                  <img alt="coin" src={coin} />
+                </li>
+              )}
+
               <li>COST OF PRODUCT</li>
-              <li className="points">
-                {selectedProduct.cost} <img alt="coin2" src={coin} />
-              </li>
+              {user.pointsLoading || user.userLoading ? (
+                <LoadingDots />
+              ) : (
+                <li className="points">
+                  {selectedProduct ? selectedProduct.cost : <Skeleton />}
+                  <img alt="coin2" src={coin} />
+                </li>
+              )}
+
               <li>REMAINING POINTS AFTER PURCHASE</li>
-              <li className="points">
-                {points - selectedProduct.cost} <img alt="coin3" src={coin} />
-              </li>
+              {user.pointsLoading || user.userLoading ? (
+                <LoadingDots />
+              ) : (
+                <li className="points">
+                  {selectedProduct ? (
+                    user.user.points - selectedProduct.cost
+                  ) : (
+                    <Skeleton />
+                  )}
+                  <img alt="coin3" src={coin} />
+                </li>
+              )}
             </ul>
           </Left>
           <Right>
-            <h2>{selectedProduct.name}</h2>
-            <img alt="product" src={selectedProduct.img.url} />
-            <RedeemButton onClick={handleRedeem}>Redeem Now</RedeemButton>
+            <h2>{selectedProduct ? selectedProduct.name : <Skeleton />}</h2>
+            {selectedProduct && (!user.pointsLoading || !user.userLoading) ? (
+              <div>
+                <img alt="product" src={selectedProduct.img.url} />
+              </div>
+            ) : (
+              <div>
+                <Skeleton />
+              </div>
+            )}
+            {selectedProduct && !user.user.points <= !selectedProduct.cost ? (
+              <RedeemButton href="#open-modal" onClick={handleRedeemButton}>
+                Redeem Now
+              </RedeemButton>
+            ) : (
+              ""
+            )}
           </Right>
         </Wrapper>
+        <Modal />
       </Container>
     </ProductPage>
   );

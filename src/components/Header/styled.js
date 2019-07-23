@@ -26,17 +26,23 @@ export const StyledShop = styled.div`
   transition-timing-function: ease-in;
   transition: 0.2s;
   transform: translateX(200%);
+
   > hr {
     border: 1px solid #15dbff;
   }
 `;
 export const Wrapper = styled.div`
   position: relative;
+
   width: 100%;
   height: 300px;
   .open {
     transition-timing-function: ease-out;
     transition: 0.25s;
     transform: translateX(0);
+  }
+  .loading-wrapper {
+    align-items: center;
+    justify-content: center;
   }
 `;

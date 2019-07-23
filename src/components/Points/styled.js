@@ -12,7 +12,7 @@ export const StyledPoints = styled.div`
   cursor: pointer;
   .unaffordable {
     color: #a70000;
-    min-width: 118px;
+    min-width: 100px;
   }
 `;
 export const Icon = styled.img`

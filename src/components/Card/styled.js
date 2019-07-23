@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 290px;
-  flex-basis: 290px;
   height: 290px;
   margin-bottom: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -15,20 +14,19 @@ export const Wrapper = styled.div`
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
   .relative {
-    position: absolute;
-    margin-top: 16px;
-    margin-left: 200px;
+    position: relative;
+    align-self: flex-end;
+    top: 0;
+    right: 0;
+    margin: 8px 8px 0 0;
     background: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
-  > .unaffordable {
-    margin-right: 100px;
-  }
 `;
 export const Image = styled.img`
-  margin-top: 20px;
   object-fit: cover;
   width: 80%;
+  margin-top: -30px;
 `;
 export const TextWrapper = styled.div`
   margin-top: -16px;

@@ -83,7 +83,7 @@ const Product = ({ match }) => {
                 <Skeleton />
               </div>
             )}
-            {selectedProduct && !user.user.points <= !selectedProduct.cost ? (
+            {selectedProduct && user.user.points >= selectedProduct.cost ? (
               <RedeemButton href="#open-modal" onClick={handleRedeemButton}>
                 Redeem Now
               </RedeemButton>

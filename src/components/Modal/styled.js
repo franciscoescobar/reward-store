@@ -1,6 +1,10 @@
 import styled from "styled-components";
 export const Wrapper = styled.div`
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   background-color: rgba(255, 255, 255, 0.5);
   top: 0;
   right: 0;
@@ -12,6 +16,7 @@ export const Wrapper = styled.div`
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
+
   &:target {
     opacity: 1;
     pointer-events: auto;
@@ -25,6 +30,14 @@ export const Wrapper = styled.div`
     transform: translate(-50%, -50%);
     padding: 2em;
     background: #ffffff;
+    @media only screen and (max-width: 800px) {
+      width: 250px;
+    }
+    > h1 {
+      @media only screen and (max-width: 800px) {
+        font-size: 24px;
+      }
+    }
   }
 `;
 export const Button = styled.div`
@@ -39,4 +52,7 @@ export const Button = styled.div`
   border-radius: 30px;
   color: white;
   font-weight: 700;
+  @media only screen and (max-width: 800px) {
+    font-size: 16px;
+  }
 `;

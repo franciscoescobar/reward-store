@@ -11,8 +11,6 @@ export const StyledBar = styled.div`
     margin-right: 24px;
     cursor: pointer;
   }
-  .loading {
-  }
 `;
 export const Icon = styled.img`
   height: 48px;

@@ -13,7 +13,7 @@ const Modal = () => {
     <Wrapper id="open-modal">
       <div>
         <h1>{history.loading ? <Skeleton /> : history.response}</h1>
-        <Link to="/">
+        <Link to="/reward-store">
           <Button>{history.loading ? <Skeleton /> : answer}</Button>
         </Link>
       </div>

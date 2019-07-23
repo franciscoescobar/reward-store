@@ -9,7 +9,7 @@ const Card = ({ product }) => {
   const { _id, category, cost, img, name } = product;
   const { url } = img;
   return (
-    <Link to={`/product/${_id}`}>
+    <Link to={`/reward-store/product/${_id}`}>
       <Wrapper>
         <Points
           relative={true}

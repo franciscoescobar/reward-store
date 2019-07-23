@@ -32,7 +32,7 @@ const AppBar = ({ product }) => {
 
   return (
     <StyledBar className={product !== true ? "" : "product"}>
-      <Link to="/">
+      <Link to="/reward-store">
         <Icon src={icon} />
       </Link>
       <UserName>{user.user.name}</UserName>

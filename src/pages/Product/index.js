@@ -15,7 +15,6 @@ import LoadingDots from "../../components/LoadingDots";
 import Skeleton from "react-loading-skeleton";
 import Modal from "../../components/Modal";
 import { getProductsRequest } from "../../thunks/products";
-import { getUserRequest } from "../../thunks/user";
 const Product = ({ match }) => {
   const productId = match.params.id;
   const dispatch = useDispatch();
@@ -27,7 +26,6 @@ const Product = ({ match }) => {
 
   const handleRedeemButton = () => {
     redeemProduct(productId)(dispatch);
-    getUserRequest()(dispatch);
   };
   useEffect(() => {
     getProductsRequest()(dispatch);

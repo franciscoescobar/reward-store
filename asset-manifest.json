@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/reward-store/static/css/main.c4738a26.chunk.css",
-    "main.js": "/reward-store/static/js/main.9c3c33b8.chunk.js",
-    "main.js.map": "/reward-store/static/js/main.9c3c33b8.chunk.js.map",
+    "main.js": "/reward-store/static/js/main.fd5657e5.chunk.js",
+    "main.js.map": "/reward-store/static/js/main.fd5657e5.chunk.js.map",
     "runtime~main.js": "/reward-store/static/js/runtime~main.2893dc18.js",
     "runtime~main.js.map": "/reward-store/static/js/runtime~main.2893dc18.js.map",
     "static/js/2.d8c5eb90.chunk.js": "/reward-store/static/js/2.d8c5eb90.chunk.js",
     "static/js/2.d8c5eb90.chunk.js.map": "/reward-store/static/js/2.d8c5eb90.chunk.js.map",
     "index.html": "/reward-store/index.html",
-    "precache-manifest.438ac5e14f2d22a9e8fb3528dec1619c.js": "/reward-store/precache-manifest.438ac5e14f2d22a9e8fb3528dec1619c.js",
+    "precache-manifest.8d9d301378a2113ebf9dbb32d48e0a2b.js": "/reward-store/precache-manifest.8d9d301378a2113ebf9dbb32d48e0a2b.js",
     "service-worker.js": "/reward-store/service-worker.js",
     "static/css/main.c4738a26.chunk.css.map": "/reward-store/static/css/main.c4738a26.chunk.css.map",
     "static/media/aerolab-logo.svg": "/reward-store/static/media/aerolab-logo.71af6f4b.svg",

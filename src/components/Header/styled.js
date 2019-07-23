@@ -24,7 +24,7 @@ export const StyledShop = styled.div`
   padding-top: 5px;
   background: #15dbff;
   transition-timing-function: ease-in;
-  transition: 0.2s;
+  transition: 0.5s;
   transform: translateX(200%);
 
   > hr {
@@ -38,7 +38,7 @@ export const Wrapper = styled.div`
   height: 300px;
   .open {
     transition-timing-function: ease-out;
-    transition: 0.25s;
+    transition: 0.5s;
     transform: translateX(0);
   }
   .loading-wrapper {

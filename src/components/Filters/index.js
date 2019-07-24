@@ -8,12 +8,13 @@ import {
   ChipsWrapper
 } from "./styled";
 import { sortHigher, sortLower, sortRecent } from "../../actions/index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const Filters = () => {
   const [first, setFirst] = useState(true);
   const [second, setSecond] = useState(false);
   const [third, setThird] = useState(false);
   const dispatch = useDispatch();
+  const products = useSelector(state => state.productsReducer);
   const handleChipClick = text => {
     setFirst(false);
     setSecond(false);
@@ -36,23 +37,25 @@ const Filters = () => {
       <ProductText>32 products</ProductText>
       <VerticalDivider />
       <SortText>Sort by:</SortText>
-      <ChipsWrapper>
-        <Chip
-          text="Most Recent"
-          selected={first}
-          onChipClick={handleChipClick}
-        />
-        <Chip
-          text="Lowest Price"
-          selected={second}
-          onChipClick={handleChipClick}
-        />
-        <Chip
-          text="Highest Price"
-          selected={third}
-          onChipClick={handleChipClick}
-        />
-      </ChipsWrapper>
+      {!products.loading ? (
+        <ChipsWrapper>
+          <Chip
+            text="Most Recent"
+            selected={first}
+            onChipClick={handleChipClick}
+          />
+          <Chip
+            text="Lowest Price"
+            selected={second}
+            onChipClick={handleChipClick}
+          />
+          <Chip
+            text="Highest Price"
+            selected={third}
+            onChipClick={handleChipClick}
+          />
+        </ChipsWrapper>
+      ) : null}
     </Wrapper>
   );
 };
